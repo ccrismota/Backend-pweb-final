@@ -22,9 +22,10 @@ public class ClienteService {
         entity.setEmail(dto.getEmail());
         entity.setNome(dto.getNome());
         entity.setSenha(dto.getSenha());
+        entity.setCpf(dto.getCpf());
         repository.save(entity);
 
-        return "tudo certo";
+        return "Cliente cadastrado com sucesso!";
      }
 
      public ClienteDTO carregar(int codigo){
@@ -34,6 +35,7 @@ public class ClienteService {
             dto.setCodigo(retorno.get().getCodigo());
             dto.setNome(retorno.get().getNome());
             dto.setEmail(retorno.get().getEmail());
+            dto.setCpf(retorno.get().getCpf());
         }
         return dto;        
      }
@@ -42,7 +44,7 @@ public class ClienteService {
         ClienteEntity obj = new ClienteEntity();
         obj.setCodigo(codigo);
         repository.delete(obj);
-        return "tudo certo";
+        return "Cliente removido com sucesso!";
     }
 
     public List<ClienteEntity> listar() {
